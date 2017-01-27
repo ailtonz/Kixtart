@@ -1,0 +1,35 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns information about devices built into the motherboard installed in a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_OnBoardDevice")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Device Type:" + $objItem.DeviceType
+    ? "Enabled:" + $objItem.Enabled
+    ? "Hot Swappable:" + $objItem.HotSwappable
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Model:" + $objItem.Model
+    ? "Name:" + $objItem.Name
+    ? "Other Identifying Info:" + $objItem.OtherIdentifyingInfo
+    ? "Part Number:" + $objItem.PartNumber
+    ? "Powered On:" + $objItem.PoweredOn
+    ? "Removable:" + $objItem.Removable
+    ? "Replaceable:" + $objItem.Replaceable
+    ? "Serial Number:" + $objItem.SerialNumber
+    ? "SKU:" + $objItem.SKU
+    ? "Status:" + $objItem.Status
+    ? "Tag:" + $objItem.Tag
+    ? "Version:" + $objItem.Version
+Next

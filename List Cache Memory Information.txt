@@ -1,0 +1,78 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Memory
+### Category3 : 
+### Description : Returns information about both the internal and external cache memory on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_CacheMemory")
+For Each $objItem in $colItems
+    ? "Access:" + $objItem.Access
+    For Each $x in $objItem.AdditionalErrorData
+        ? "Additional Error Data:" + $x
+    Next
+    ? "Associativity:" + $objItem.Associativity
+    ? "Availability:" + $objItem.Availability
+    ? "Block Size:" + $objItem.BlockSize
+    ? "Cache Speed:" + $objItem.CacheSpeed
+    ? "Cache Type:" + $objItem.CacheType
+    ? "Caption:" + $objItem.Caption
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Correctable Error:" + $objItem.CorrectableError
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    For Each $x in $objItem.CurrentSRAM
+        ? "Current SRAM:" + $x
+    Next
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Ending Address:" + $objItem.EndingAddress
+    ? "Error Access:" + $objItem.ErrorAccess
+    ? "Error Address:" + $objItem.ErrorAddress
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Correct Type:" + $objItem.ErrorCorrectType
+    For Each $x in $objItem.ErrorData
+        ? "Error Data:" + $x
+    Next
+    ? "Error Data Order:" + $objItem.ErrorDataOrder
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Error Info:" + $objItem.ErrorInfo
+    ? "Error Methodology:" + $objItem.ErrorMethodology
+    ? "Error Resolution:" + $objItem.ErrorResolution
+    ? "Error Time:" + $objItem.ErrorTime
+    ? "Error Transfer Size:" + $objItem.ErrorTransferSize
+    ? "Flush Timer:" + $objItem.FlushTimer
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Installed Size:" + $objItem.InstalledSize
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Level:" + $objItem.Level
+    ? "Line Size:" + $objItem.LineSize
+    ? "Location:" + $objItem.Location
+    ? "Max Cache Size:" + $objItem.MaxCacheSize
+    ? "Name:" + $objItem.Name
+    ? "Number Of Blocks:" + $objItem.NumberOfBlocks
+    ? "Other Error Description:" + $objItem.OtherErrorDescription
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Purpose:" + $objItem.Purpose
+    ? "Read Policy:" + $objItem.ReadPolicy
+    ? "Replacement Policy:" + $objItem.ReplacementPolicy
+    ? "Starting Address:" + $objItem.StartingAddress
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    For Each $x in $objItem.SupportedSRAM
+        ? "Supported SRAM:" + $x
+    Next
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Level Address:" + $objItem.SystemLevelAddress
+    ? "System Name:" + $objItem.SystemName
+    ? "Write Policy:" + $objItem.WritePolicy
+Next

@@ -1,0 +1,36 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Memory
+### Category3 : 
+### Description : Returns information about the configuration of DMA channels on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_DMAChannel")
+For Each $objItem in $colItems
+    ? "Address Size:" + $objItem.AddressSize
+    ? "Availability:" + $objItem.Availability
+    ? "Burst Mode:" + $objItem.BurstMode
+    ? "Byte Mode:" + $objItem.ByteMode
+    ? "Caption:" + $objItem.Caption
+    ? "Channel Timing:" + $objItem.ChannelTiming
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "CS Creation Class Name:" + $objItem.CSCreationClassName
+    ? "CS Name:" + $objItem.CSName
+    ? "Description:" + $objItem.Description
+    ? "DMA Channel:" + $objItem.DMAChannel
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Max Transfer Size:" + $objItem.MaxTransferSize
+    ? "Name:" + $objItem.Name
+    ? "Port:" + $objItem.Port
+    ? "Status:" + $objItem.Status
+    For Each $x in $objItem.TransferWidths
+        ? "Transfer Widths:" + $x
+    Next
+    ? "Type C Timing:" + $objItem.TypeCTiming
+    ? "Word Mode:" + $objItem.WordMode
+Next

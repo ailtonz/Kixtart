@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about the Terminal Service client environment settings configured on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TSEnvironmentSetting")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Client WallPaper:" + $objItem.ClientWallPaper
+    ? "Description:" + $objItem.Description
+    ? "Initial Program Path:" + $objItem.InitialProgramPath
+    ? "Initial Program Policy:" + $objItem.InitialProgramPolicy
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Start in:" + $objItem.Startin
+    ? "Terminal Name:" + $objItem.TerminalName
+Next

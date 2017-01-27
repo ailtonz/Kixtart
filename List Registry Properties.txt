@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Registry
+### Category3 : 
+### Description : Returns information about the computer registry.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Registry")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Current Size:" + $objItem.CurrentSize
+    ? "Description:" + $objItem.Description
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Maximum Size:" + $objItem.MaximumSize
+    ? "Name:" + $objItem.Name
+    ? "Proposed Size:" + $objItem.ProposedSize
+    ? "Status:" + $objItem.Status
+Next

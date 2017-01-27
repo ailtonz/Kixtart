@@ -1,0 +1,60 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Retrieves an integer value indicating the chassis type for a computer (mini-tower, laptop, etc.). The script does not include a description of each value that can be returned.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_SystemEnclosure")
+For Each $objItem in $colItems
+    ? "Audible Alarm:" + $objItem.AudibleAlarm
+    ? "Breach Description:" + $objItem.BreachDescription
+    ? "Cable Management Strategy:" + $objItem.CableManagementStrategy
+    ? "Caption:" + $objItem.Caption
+    For Each $x in $objItem.ChassisTypes
+        ? "Chassis Types:" + $x
+    Next
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Current Required Or Produced:" + $objItem.CurrentRequiredOrProduced
+    ? "Depth:" + $objItem.Depth
+    ? "Description:" + $objItem.Description
+    ? "Heat Generation:" + $objItem.HeatGeneration
+    ? "Height:" + $objItem.Height
+    ? "Hot Swappable:" + $objItem.HotSwappable
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Lock Present:" + $objItem.LockPresent
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Model:" + $objItem.Model
+    ? "Name:" + $objItem.Name
+    ? "Number Of Power Cords:" + $objItem.NumberOfPowerCords
+    ? "Other Identifying Info:" + $objItem.OtherIdentifyingInfo
+    ? "Part Number:" + $objItem.PartNumber
+    ? "Powered On:" + $objItem.PoweredOn
+    ? "Removable:" + $objItem.Removable
+    ? "Replaceable:" + $objItem.Replaceable
+    ? "Security Breach:" + $objItem.SecurityBreach
+    ? "Security Status:" + $objItem.SecurityStatus
+    ? "Serial Number:" + $objItem.SerialNumber
+    For Each $x in $objItem.ServiceDescriptions
+        ? "Service Descriptions:" + $x
+    Next
+    For Each $x in $objItem.ServicePhilosophy
+        ? "Service Philosophy:" + $x
+    Next
+    ? "SKU:" + $objItem.SKU
+    ? "SMBIOS Asset Tag:" + $objItem.SMBIOSAssetTag
+    ? "Status:" + $objItem.Status
+    ? "Tag:" + $objItem.Tag
+    For Each $x in $objItem.TypeDescriptions
+        ? "Type Descriptions:" + $x
+    Next
+    ? "Version:" + $objItem.Version
+    ? "Visible Alarm:" + $objItem.VisibleAlarm
+    ? "Weight:" + $objItem.Weight
+    ? "Width:" + $objItem.Width
+Next

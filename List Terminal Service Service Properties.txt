@@ -1,0 +1,45 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about the Terminal Service service.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TerminalService")
+For Each $objItem in $colItems
+    ? "Accept Pause:" + $objItem.AcceptPause
+    ? "Accept Stop:" + $objItem.AcceptStop
+    ? "Caption:" + $objItem.Caption
+    ? "CheckPoint:" + $objItem.CheckPoint
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Desktop Interact:" + $objItem.DesktopInteract
+    ? "Disconnected Sessions:" + $objItem.DisconnectedSessions
+    ? "Display Name:" + $objItem.DisplayName
+    ? "Error Control:" + $objItem.ErrorControl
+    ? "Estimated Session Capacity:" + $objItem.EstimatedSessionCapacity
+    ? "Exit Code:" + $objItem.ExitCode
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Name:" + $objItem.Name
+    ? "Path Name:" + $objItem.PathName
+    ? "Process Id:" + $objItem.ProcessId
+    ? "Raw Session Capacity:" + $objItem.RawSessionCapacity
+    ? "Resource Constraint:" + $objItem.ResourceConstraint
+    ? "Service Specific Exit Code:" + $objItem.ServiceSpecificExitCode
+    ? "Service Type:" + $objItem.ServiceType
+    ? "Started:" + $objItem.Started
+    ? "Start Mode:" + $objItem.StartMode
+    ? "Start Name:" + $objItem.StartName
+    ? "State:" + $objItem.State
+    ? "Status:" + $objItem.Status
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "Tag Id:" + $objItem.TagId
+    ? "Total Sessions:" + $objItem.TotalSessions
+    ? "Wait Hint:" + $objItem.WaitHint
+Next

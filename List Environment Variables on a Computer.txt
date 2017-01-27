@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Windows and Explorer Settings
+### Category3 : 
+### Description : Uses WMI to return information about all the environment variables on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Environment")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Name:" + $objItem.Name
+    ? "Status:" + $objItem.Status
+    ? "System Variable:" + $objItem.SystemVariable
+    ? "User Name:" + $objItem.UserName
+    ? "Variable Value:" + $objItem.VariableValue
+Next

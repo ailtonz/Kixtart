@@ -1,0 +1,22 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns configuration information for all the Terminal Service session directories found on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TSSessionDirectory")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "SessionDirectoryActive:" + $objItem.SessionDirectoryActive
+    ? "SessionDirectoryClusterName:" + $objItem.SessionDirectoryClusterName
+    ? "SessionDirectoryExposeServerIP:" + $objItem.SessionDirectoryExposeServerIP
+    ? "SessionDirectoryLocation:" + $objItem.SessionDirectoryLocation
+    ? "SettingID:" + $objItem.SettingID
+Next

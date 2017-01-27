@@ -1,0 +1,55 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Lists property values for all the network adapters installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_NetworkAdapter")
+For Each $objItem in $colItems
+    ? "Adapter Type:" + $objItem.AdapterType
+    ? "Adapter Type Id:" + $objItem.AdapterTypeId
+    ? "AutoSense:" + $objItem.AutoSense
+    ? "Availability:" + $objItem.Availability
+    ? "Caption:" + $objItem.Caption
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Index:" + $objItem.Index
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Installed:" + $objItem.Installed
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "MAC Address:" + $objItem.MACAddress
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Max Number Controlled:" + $objItem.MaxNumberControlled
+    ? "Max Speed:" + $objItem.MaxSpeed
+    ? "Name:" + $objItem.Name
+    ? "Net Connection ID:" + $objItem.NetConnectionID
+    ? "Net Connection Status:" + $objItem.NetConnectionStatus
+    For Each $x in $objItem.NetworkAddresses
+        ? "Network Addresses:" + $x
+    Next
+    ? "Permanent Address:" + $objItem.PermanentAddress
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Product Name:" + $objItem.ProductName
+    ? "Service Name:" + $objItem.ServiceName
+    ? "Speed:" + $objItem.Speed
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "Time Of Last Reset:" + $objItem.TimeOfLastReset
+Next

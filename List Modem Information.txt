@@ -1,0 +1,106 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Peripherals and Devices
+### Category3 : 
+### Description : Retrieves information about all the modems installed in a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_POTSModem")
+For Each $objItem in $colItems
+    ? "Answer Mode:" + $objItem.AnswerMode
+    ? "Attached To:" + $objItem.AttachedTo
+    ? "Availability:" + $objItem.Availability
+    ? "Blind Off:" + $objItem.BlindOff
+    ? "Blind On:" + $objItem.BlindOn
+    ? "Caption:" + $objItem.Caption
+    ? "Compatibility Flags:" + $objItem.CompatibilityFlags
+    ? "Compression Info:" + $objItem.CompressionInfo
+    ? "Compression Off:" + $objItem.CompressionOff
+    ? "Compression On:" + $objItem.CompressionOn
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Configuration Dialog:" + $objItem.ConfigurationDialog
+    For Each $x in $objItem.CountriesSupported
+        ? "Countries Supported:" + $x
+    Next
+    ? "Country Selected:" + $objItem.CountrySelected
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    For Each $x in $objItem.CurrentPasswords
+        ? "Current Passwords:" + $x
+    Next
+    For Each $x in $objItem.DCB
+        ? "DCB:" + $x
+    Next
+    For Each $x in $objItem.Default
+        ? "Default:" + $x
+    Next
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Device Loader:" + $objItem.DeviceLoader
+    ? "Device Type:" + $objItem.DeviceType
+    ? "Dial Type:" + $objItem.DialType
+    ? "Driver Date:" + $objItem.DriverDate
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Control Forced:" + $objItem.ErrorControlForced
+    ? "Error Control Info:" + $objItem.ErrorControlInfo
+    ? "Error Control Off:" + $objItem.ErrorControlOff
+    ? "Error Control On:" + $objItem.ErrorControlOn
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Flow Control Hard:" + $objItem.FlowControlHard
+    ? "Flow Control Off:" + $objItem.FlowControlOff
+    ? "Flow Control Soft:" + $objItem.FlowControlSoft
+    ? "Inactivity Scale:" + $objItem.InactivityScale
+    ? "Inactivity Timeout:" + $objItem.InactivityTimeout
+    ? "Index:" + $objItem.Index
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Max Baud Rate To Phone:" + $objItem.MaxBaudRateToPhone
+    ? "Max Baud Rate To Serial Port:" + $objItem.MaxBaudRateToSerialPort
+    ? "Max Number Of Passwords:" + $objItem.MaxNumberOfPasswords
+    ? "Model:" + $objItem.Model
+    ? "Modem Inf Path:" + $objItem.ModemInfPath
+    ? "Modem Inf Section:" + $objItem.ModemInfSection
+    ? "Modulation Bell:" + $objItem.ModulationBell
+    ? "Modulation CCITT:" + $objItem.ModulationCCITT
+    ? "Modulation Scheme:" + $objItem.ModulationScheme
+    ? "Name:" + $objItem.Name
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    ? "Port SubClass:" + $objItem.PortSubClass
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Prefix:" + $objItem.Prefix
+    For Each $x in $objItem.Properties
+        ? "Properties:" + $x
+    Next
+    ? "Provider Name:" + $objItem.ProviderName
+    ? "Pulse:" + $objItem.Pulse
+    ? "Reset:" + $objItem.Reset
+    ? "Responses Key Name:" + $objItem.ResponsesKeyName
+    ? "Rings Before Answer:" + $objItem.RingsBeforeAnswer
+    ? "Speaker Mode Dial:" + $objItem.SpeakerModeDial
+    ? "Speaker Mode Off:" + $objItem.SpeakerModeOff
+    ? "Speaker Mode On:" + $objItem.SpeakerModeOn
+    ? "Speaker Mode Setup:" + $objItem.SpeakerModeSetup
+    ? "Speaker Volume High:" + $objItem.SpeakerVolumeHigh
+    ? "Speaker Volume Info:" + $objItem.SpeakerVolumeInfo
+    ? "Speaker Volume Low:" + $objItem.SpeakerVolumeLow
+    ? "Speaker Volume Med:" + $objItem.SpeakerVolumeMed
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "String Format:" + $objItem.StringFormat
+    ? "Supports Callback:" + $objItem.SupportsCallback
+    ? "Supports Synchronous Connect:" + $objItem.SupportsSynchronousConnect
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "Terminator:" + $objItem.Terminator
+    ? "Time Of Last Reset:" + $objItem.TimeOfLastReset
+    ? "Tone:" + $objItem.Tone
+    ? "Voice Switch Feature:" + $objItem.VoiceSwitchFeature
+Next

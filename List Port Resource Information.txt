@@ -1,0 +1,26 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Ports and Slots
+### Category3 : 
+### Description : Returns information about all the I/O ports found on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_PortResource")
+For Each $objItem in $colItems
+    ? "Alias:" + $objItem.Alias
+    ? "Caption:" + $objItem.Caption
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "CS Creation Class Name:" + $objItem.CSCreationClassName
+    ? "CS Name:" + $objItem.CSName
+    ? "Description:" + $objItem.Description
+    ? "Ending Address:" + $objItem.EndingAddress
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Name:" + $objItem.Name
+    ? "Starting Address:" + $objItem.StartingAddress
+    ? "Status:" + $objItem.Status
+Next

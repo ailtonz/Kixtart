@@ -1,0 +1,33 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Returns information about the IP route tables configured on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_IP4RouteTable")
+For Each $objItem in $colItems
+    ? "Age:" + $objItem.Age
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Destination:" + $objItem.Destination
+    ? "Information:" + $objItem.Information
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Interface Index:" + $objItem.InterfaceIndex
+    ? "Mask:" + $objItem.Mask
+    ? "Metric 1:" + $objItem.Metric1
+    ? "Metric 2:" + $objItem.Metric2
+    ? "Metric 3:" + $objItem.Metric3
+    ? "Metric 4:" + $objItem.Metric4
+    ? "Metric 5:" + $objItem.Metric5
+    ? "Name:" + $objItem.Name
+    ? "Next Hop:" + $objItem.NextHop
+    ? "Protocol:" + $objItem.Protocol
+    ? "Status:" + $objItem.Status
+    ? "Type:" + $objItem.Type
+Next

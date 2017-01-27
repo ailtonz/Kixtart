@@ -1,0 +1,48 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Retrieves BIOS information for a computer, including BIOS version number and release date.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_BIOS")
+For Each $objItem in $colItems
+    For Each $x in $objItem.BiosCharacteristics
+        ? "Bios Characteristics:" + $x
+    Next
+    For Each $x in $objItem.BIOSVersion
+        ? "BIOS Version:" + $x
+    Next
+    ? "Build Number:" + $objItem.BuildNumber
+    ? "Caption:" + $objItem.Caption
+    ? "Code Set:" + $objItem.CodeSet
+    ? "Current Language:" + $objItem.CurrentLanguage
+    ? "Description:" + $objItem.Description
+    ? "Identification Code:" + $objItem.IdentificationCode
+    ? "Installable Languages:" + $objItem.InstallableLanguages
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Language Edition:" + $objItem.LanguageEdition
+    For Each $x in $objItem.ListOfLanguages
+        ? "List Of Languages:" + $x
+    Next
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Name:" + $objItem.Name
+    ? "Other Target OS:" + $objItem.OtherTargetOS
+    ? "Primary BIOS:" + $objItem.PrimaryBIOS
+    ? "Release Date:" + $objItem.ReleaseDate
+    ? "Serial Number:" + $objItem.SerialNumber
+    ? "SMBIOS BIOS Version:" + $objItem.SMBIOSBIOSVersion
+    ? "SMBIOS Major Version:" + $objItem.SMBIOSMajorVersion
+    ? "SMBIOS Minor Version:" + $objItem.SMBIOSMinorVersion
+    ? "SMBIOS Present:" + $objItem.SMBIOSPresent
+    ? "Software Element ID:" + $objItem.SoftwareElementID
+    ? "Software Element State:" + $objItem.SoftwareElementState
+    ? "Status:" + $objItem.Status
+    ? "Target Operating System:" + $objItem.TargetOperatingSystem
+    ? "Version:" + $objItem.Version
+Next

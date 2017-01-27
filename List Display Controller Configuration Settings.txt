@@ -1,0 +1,29 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Video and Display
+### Category3 : 
+### Description : Returns information about the video adapters installed in a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_DisplayControllerConfiguration")
+For Each $objItem in $colItems
+    ? "Bits Per Pixel:" + $objItem.BitsPerPixel
+    ? "Caption:" + $objItem.Caption
+    ? "Color Planes:" + $objItem.ColorPlanes
+    ? "Description:" + $objItem.Description
+    ? "Device Entries In A Color Table:" + $objItem.DeviceEntriesInAColorTable
+    ? "Device Specific Pens:" + $objItem.DeviceSpecificPens
+    ? "Horizontal Resolution:" + $objItem.HorizontalResolution
+    ? "Name:" + $objItem.Name
+    ? "Refresh Rate:" + $objItem.RefreshRate
+    ? "Reserved System Palette Entries:" + $objItem.ReservedSystemPaletteEntries
+    ? "Setting ID:" + $objItem.SettingID
+    ? "System Palette Entries:" + $objItem.SystemPaletteEntries
+    ? "Vertical Resolution:" + $objItem.VerticalResolution
+    ? "Video Mode:" + $objItem.VideoMode
+Next

@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Applications
+### Category2 : User
+### Category3 : 
+### Description : Returns the name and product code of binary information (such as bitmaps, icons, executable files, and so on) used by a Windows Installer application.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Binary")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Data:" + $objItem.Data
+    ? "Description:" + $objItem.Description
+    ? "Name:" + $objItem.Name
+    ? "Product Code:" + $objItem.ProductCode
+    ? "Setting ID:" + $objItem.SettingID
+Next

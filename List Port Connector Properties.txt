@@ -1,0 +1,37 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Ports and Slots
+### Category3 : 
+### Description : Returns information about port connectors installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_PortConnector")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Connector Pinout:" + $objItem.ConnectorPinout
+    For Each $x in $objItem.ConnectorType
+        ? "Connector Type:" + $x
+    Next
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "External Reference Designator:" + $objItem.ExternalReferenceDesignator
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Internal Reference Designator:" + $objItem.InternalReferenceDesignator
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Model:" + $objItem.Model
+    ? "Name:" + $objItem.Name
+    ? "Other Identifying Info:" + $objItem.OtherIdentifyingInfo
+    ? "Part Number:" + $objItem.PartNumber
+    ? "Port Type:" + $objItem.PortType
+    ? "Powered On:" + $objItem.PoweredOn
+    ? "Serial Number:" + $objItem.SerialNumber
+    ? "SKU:" + $objItem.SKU
+    ? "Status:" + $objItem.Status
+    ? "Tag:" + $objItem.Tag
+    ? "Version:" + $objItem.Version
+Next

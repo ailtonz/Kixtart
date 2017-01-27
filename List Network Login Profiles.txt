@@ -1,0 +1,47 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Returns network login information for all the users of a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_NetworkLoginProfile")
+For Each $objItem in $colItems
+    ? "Account Expires:" + $objItem.AccountExpires
+    ? "Authorization Flags:" + $objItem.AuthorizationFlags
+    ? "Bad Password Count:" + $objItem.BadPasswordCount
+    ? "Caption:" + $objItem.Caption
+    ? "Code Page:" + $objItem.CodePage
+    ? "Comment:" + $objItem.Comment
+    ? "Country Code:" + $objItem.CountryCode
+    ? "Description:" + $objItem.Description
+    ? "Flags:" + $objItem.Flags
+    ? "Full Name:" + $objItem.FullName
+    ? "Home Directory:" + $objItem.HomeDirectory
+    ? "Home Directory Drive:" + $objItem.HomeDirectoryDrive
+    ? "Last Logoff:" + $objItem.LastLogoff
+    ? "Last Logon:" + $objItem.LastLogon
+    ? "Logon Hours:" + $objItem.LogonHours
+    ? "Logon Server:" + $objItem.LogonServer
+    ? "Maximum Storage:" + $objItem.MaximumStorage
+    ? "Name:" + $objItem.Name
+    ? "Number Of Logons:" + $objItem.NumberOfLogons
+    ? "Parameters:" + $objItem.Parameters
+    ? "Password Age:" + $objItem.PasswordAge
+    ? "Password Expires:" + $objItem.PasswordExpires
+    ? "Primary Group Id:" + $objItem.PrimaryGroupId
+    ? "Privileges:" + $objItem.Privileges
+    ? "Profile:" + $objItem.Profile
+    ? "Script Path:" + $objItem.ScriptPath
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Units Per Week:" + $objItem.UnitsPerWeek
+    ? "User Comment:" + $objItem.UserComment
+    ? "User Id:" + $objItem.UserId
+    ? "User Type:" + $objItem.UserType
+    ? "Workstations:" + $objItem.Workstations
+Next

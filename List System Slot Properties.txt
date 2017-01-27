@@ -1,0 +1,52 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Ports and Slots
+### Category3 : 
+### Description : Returns information about the system slots installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_SystemSlot")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Connector Pinout:" + $objItem.ConnectorPinout
+    For Each $x in $objItem.ConnectorType
+        ? "Connector Type:" + $x
+    Next
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Current Usage:" + $objItem.CurrentUsage
+    ? "Description:" + $objItem.Description
+    ? "Height Allowed:" + $objItem.HeightAllowed
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Length Allowed:" + $objItem.LengthAllowed
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Max Data Width:" + $objItem.MaxDataWidth
+    ? "Model:" + $objItem.Model
+    ? "Name:" + $objItem.Name
+    ? "Number:" + $objItem.Number
+    ? "Other Identifying Info:" + $objItem.OtherIdentifyingInfo
+    ? "Part Number:" + $objItem.PartNumber
+    ? "PME Signal:" + $objItem.PMESignal
+    ? "Powered On:" + $objItem.PoweredOn
+    ? "Purpose Description:" + $objItem.PurposeDescription
+    ? "Serial Number:" + $objItem.SerialNumber
+    ? "Shared:" + $objItem.Shared
+    ? "SKU:" + $objItem.SKU
+    ? "Slot Designation:" + $objItem.SlotDesignation
+    ? "Special Purpose:" + $objItem.SpecialPurpose
+    ? "Status:" + $objItem.Status
+    ? "Supports Hot Plug:" + $objItem.SupportsHotPlug
+    ? "Tag:" + $objItem.Tag
+    ? "Thermal Rating:" + $objItem.ThermalRating
+    For Each $x in $objItem.VccMixedVoltageSupport
+        ? "Vcc Mixed Voltage Support:" + $x
+    Next
+    ? "Version:" + $objItem.Version
+    For Each $x in $objItem.VppMixedVoltageSupport
+        ? "Vpp Mixed Voltage Support:" + $x
+    Next
+Next

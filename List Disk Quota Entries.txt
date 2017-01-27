@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Storage
+### Category2 : Disk Quotas
+### Category3 : 
+### Description : Enumerates disk quota information (including user name, warning and quota limits, and disk space used) for each disk quota entry on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_DiskQuota")
+For Each $objItem in $colItems
+    ? "Disk Space Used:" + $objItem.DiskSpaceUsed
+    ? "Limit:" + $objItem.Limit
+    ? "Quota Volume:" + $objItem.QuotaVolume
+    ? "Status:" + $objItem.Status
+    ? "User:" + $objItem.User
+    ? "Warning Limit:" + $objItem.WarningLimit
+Next

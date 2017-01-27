@@ -1,0 +1,50 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Peripherals and Devices
+### Category3 : 
+### Description : Returns information about all the pointing devices (including mice and trackballs) installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_PointingDevice")
+For Each $objItem in $colItems
+    ? "Availability:" + $objItem.Availability
+    ? "Caption:" + $objItem.Caption
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Device Interface:" + $objItem.DeviceInterface
+    ? "Double Speed Threshold:" + $objItem.DoubleSpeedThreshold
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Handedness:" + $objItem.Handedness
+    ? "Hardware Type:" + $objItem.HardwareType
+    ? "Inf File Name:" + $objItem.InfFileName
+    ? "Inf Section:" + $objItem.InfSection
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Is Locked:" + $objItem.IsLocked
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Name:" + $objItem.Name
+    ? "Number Of Buttons:" + $objItem.NumberOfButtons
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    ? "Pointing Type:" + $objItem.PointingType
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Quad Speed Threshold:" + $objItem.QuadSpeedThreshold
+    ? "Resolution:" + $objItem.Resolution
+    ? "Sample Rate:" + $objItem.SampleRate
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "Synch:" + $objItem.Synch
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+Next

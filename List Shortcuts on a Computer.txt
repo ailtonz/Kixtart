@@ -1,0 +1,49 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Windows and Explorer Settings
+### Category3 : 
+### Description : Uses WMI to return a list of all the shortcuts on a computer, as well as such properties as the file name, creation date, and target for each shortcut.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_ShortcutFile")
+For Each $objItem in $colItems
+    ? "Access Mask:" + $objItem.AccessMask
+    ? "Archive:" + $objItem.Archive
+    ? "Caption:" + $objItem.Caption
+    ? "Compressed:" + $objItem.Compressed
+    ? "Compression Method:" + $objItem.CompressionMethod
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Creation Date:" + $objItem.CreationDate
+    ? "CS Creation Class Name:" + $objItem.CSCreationClassName
+    ? "CS Name:" + $objItem.CSName
+    ? "Description:" + $objItem.Description
+    ? "Drive:" + $objItem.Drive
+    ? "Eight Dot Three File Name:" + $objItem.EightDotThreeFileName
+    ? "Encrypted:" + $objItem.Encrypted
+    ? "Encryption Method:" + $objItem.EncryptionMethod
+    ? "Extension:" + $objItem.Extension
+    ? "File Name:" + $objItem.FileName
+    ? "File Size:" + $objItem.FileSize
+    ? "File Type:" + $objItem.FileType
+    ? "FS Creation Class Name:" + $objItem.FSCreationClassName
+    ? "FS Name:" + $objItem.FSName
+    ? "Hidden:" + $objItem.Hidden
+    ? "Install Date:" + $objItem.InstallDate
+    ? "In Use Count:" + $objItem.InUseCount
+    ? "Last Accessed:" + $objItem.LastAccessed
+    ? "Last Modified:" + $objItem.LastModified
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Name:" + $objItem.Name
+    ? "Path:" + $objItem.Path
+    ? "Readable:" + $objItem.Readable
+    ? "Status:" + $objItem.Status
+    ? "System:" + $objItem.System
+    ? "Target:" + $objItem.Target
+    ? "Version:" + $objItem.Version
+    ? "Writeable:" + $objItem.Writeable
+Next

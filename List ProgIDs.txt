@@ -1,0 +1,26 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : COM and DCOM
+### Category3 : 
+### Description : Returns a list of ProgIDs (Programmatic Identifiers) found on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_ProgIDSpecification")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Check ID:" + $objItem.CheckID
+    ? "Check Mode:" + $objItem.CheckMode
+    ? "Description:" + $objItem.Description
+    ? "Name:" + $objItem.Name
+    ? "Parent:" + $objItem.Parent
+    ? "ProgID:" + $objItem.ProgID
+    ? "Software Element ID:" + $objItem.SoftwareElementID
+    ? "Software Element State:" + $objItem.SoftwareElementState
+    ? "Target Operating System:" + $objItem.TargetOperatingSystem
+    ? "Version:" + $objItem.Version
+Next

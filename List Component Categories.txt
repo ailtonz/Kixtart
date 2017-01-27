@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : COM and DCOM
+### Category3 : 
+### Description : Retrieves information about the COM class component categories (COM classes that share common functionalities) found on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_ComponentCategory")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Category Id:" + $objItem.CategoryId
+    ? "Description:" + $objItem.Description
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Name:" + $objItem.Name
+    ? "Status:" + $objItem.Status
+Next

@@ -1,0 +1,44 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Ports and Slots
+### Category3 : 
+### Description : Enumerates configuration values for all the serial ports installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_SerialPortConfiguration")
+For Each $objItem in $colItems
+    ? "Abort Read Write On Error:" + $objItem.AbortReadWriteOnError
+    ? "Baud Rate:" + $objItem.BaudRate
+    ? "Binary Mode Enabled:" + $objItem.BinaryModeEnabled
+    ? "Bits Per Byte:" + $objItem.BitsPerByte
+    ? "Caption:" + $objItem.Caption
+    ? "Continue XMit On XOff:" + $objItem.ContinueXMitOnXOff
+    ? "CTS Outflow Control:" + $objItem.CTSOutflowControl
+    ? "Description:" + $objItem.Description
+    ? "Discard NULL Bytes:" + $objItem.DiscardNULLBytes
+    ? "DSR Outflow Control:" + $objItem.DSROutflowControl
+    ? "DSR Sensitivity:" + $objItem.DSRSensitivity
+    ? "DTR Flow Control Type:" + $objItem.DTRFlowControlType
+    ? "EOF Character:" + $objItem.EOFCharacter
+    ? "Error Replace Character:" + $objItem.ErrorReplaceCharacter
+    ? "Error Replacement Enabled:" + $objItem.ErrorReplacementEnabled
+    ? "Event Character:" + $objItem.EventCharacter
+    ? "Is Busy:" + $objItem.IsBusy
+    ? "Name:" + $objItem.Name
+    ? "Parity:" + $objItem.Parity
+    ? "Parity Check Enabled:" + $objItem.ParityCheckEnabled
+    ? "RTS Flow Control Type:" + $objItem.RTSFlowControlType
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Stop Bits:" + $objItem.StopBits
+    ? "XOff Character:" + $objItem.XOffCharacter
+    ? "XOff XMit Threshold:" + $objItem.XOffXMitThreshold
+    ? "XOn Character:" + $objItem.XOnCharacter
+    ? "XOn XMit Threshold:" + $objItem.XOnXMitThreshold
+    ? "XOn XOff InFlow Control:" + $objItem.XOnXOffInFlowControl
+    ? "XOn XOff OutFlow Control:" + $objItem.XOnXOffOutFlowControl
+Next

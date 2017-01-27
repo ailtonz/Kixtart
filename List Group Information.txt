@@ -1,0 +1,24 @@
+###
+###
+###
+### Category1 : Other Directory Services
+### Category2 : Local Computer and NT 4 Accounts
+### Category3 : Groups
+### Description : Returns information about the groups found on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Group")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Domain:" + $objItem.Domain
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Local Account:" + $objItem.LocalAccount
+    ? "Name:" + $objItem.Name
+    ? "SID:" + $objItem.SID
+    ? "SID Type:" + $objItem.SIDType
+    ? "Status:" + $objItem.Status
+Next

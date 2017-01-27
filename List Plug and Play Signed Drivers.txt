@@ -1,0 +1,43 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Peripherals and Devices
+### Category3 : 
+### Description : Returns information about the signed plug and play drivers installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_PnPSignedDriver")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Class Guid:" + $objItem.ClassGuid
+    ? "Compat ID:" + $objItem.CompatID
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Device Class:" + $objItem.DeviceClass
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Device Name:" + $objItem.DeviceName
+    ? "Dev Loader:" + $objItem.DevLoader
+    ? "Driver Date:" + $objItem.DriverDate
+    ? "Driver Name:" + $objItem.DriverName
+    ? "Driver ProviderName:" + $objItem.DriverProviderName
+    ? "Driver Version:" + $objItem.DriverVersion
+    ? "Friendly Name:" + $objItem.FriendlyName
+    ? "HardWare ID:" + $objItem.HardWareID
+    ? "Inf Name:" + $objItem.InfName
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Is Signed:" + $objItem.IsSigned
+    ? "Location:" + $objItem.Location
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Name:" + $objItem.Name
+    ? "PDO:" + $objItem.PDO
+    ? "Signer:" + $objItem.Signer
+    ? "Started:" + $objItem.Started
+    ? "Start Mode:" + $objItem.StartMode
+    ? "Status:" + $objItem.Status
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+Next

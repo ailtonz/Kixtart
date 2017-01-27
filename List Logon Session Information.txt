@@ -1,0 +1,24 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Logon Sessions
+### Category3 : 
+### Description : Returns information about logon sessions associated with the user currently logged on to a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_LogonSession")
+For Each $objItem in $colItems
+    ? "Authentication Package:" + $objItem.AuthenticationPackage
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Logon Id:" + $objItem.LogonId
+    ? "Logon Type:" + $objItem.LogonType
+    ? "Name:" + $objItem.Name
+    ? "Start Time:" + $objItem.StartTime
+    ? "Status:" + $objItem.Status
+Next

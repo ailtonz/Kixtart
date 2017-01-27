@@ -1,0 +1,31 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about the Terminal Service client settings and policies configured on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TSClientSetting")
+For Each $objItem in $colItems
+    ? "Audio Mapping:" + $objItem.AudioMapping
+    ? "Caption:" + $objItem.Caption
+    ? "Clipboard Mapping:" + $objItem.ClipboardMapping
+    ? "Color Depth:" + $objItem.ColorDepth
+    ? "Color Depth Policy:" + $objItem.ColorDepthPolicy
+    ? "COM Port Mapping:" + $objItem.COMPortMapping
+    ? "Connect Client Drives At Logon:" + $objItem.ConnectClientDrivesAtLogon
+    ? "Connection Policy:" + $objItem.ConnectionPolicy
+    ? "Connect Printer At Logon:" + $objItem.ConnectPrinterAtLogon
+    ? "Default To Client Printer:" + $objItem.DefaultToClientPrinter
+    ? "Description:" + $objItem.Description
+    ? "Drive Mapping:" + $objItem.DriveMapping
+    ? "LPT Port Mapping:" + $objItem.LPTPortMapping
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Terminal Name:" + $objItem.TerminalName
+    ? "Windows Printer Mapping:" + $objItem.WindowsPrinterMapping
+Next

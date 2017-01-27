@@ -1,0 +1,83 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns basic hardware and configuration information about a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_ComputerSystem")
+For Each $objItem in $colItems
+    ? "Admin Password Status:" + $objItem.AdminPasswordStatus
+    ? "Automatic Reset Boot Option:" + $objItem.AutomaticResetBootOption
+    ? "Automatic Reset Capability:" + $objItem.AutomaticResetCapability
+    ? "Boot Option On Limit:" + $objItem.BootOptionOnLimit
+    ? "Boot Option On WatchDog:" + $objItem.BootOptionOnWatchDog
+    ? "Boot ROM Supported:" + $objItem.BootROMSupported
+    ? "Bootup State:" + $objItem.BootupState
+    ? "Caption:" + $objItem.Caption
+    ? "Chassis Bootup State:" + $objItem.ChassisBootupState
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Current Time Zone:" + $objItem.CurrentTimeZone
+    ? "Daylight In Effect:" + $objItem.DaylightInEffect
+    ? "Description:" + $objItem.Description
+    ? "Domain:" + $objItem.Domain
+    ? "Domain Role:" + $objItem.DomainRole
+    ? "Enable Daylight Savings Time:" + $objItem.EnableDaylightSavingsTime
+    ? "Front Panel ResetStatus:" + $objItem.FrontPanelResetStatus
+    ? "Infrared Supported:" + $objItem.InfraredSupported
+    For Each $x in $objItem.InitialLoadInfo
+        ? "Initial Load Info:" + $x
+    Next
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Keyboard Password Status:" + $objItem.KeyboardPasswordStatus
+    ? "Last Load Info:" + $objItem.LastLoadInfo
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Model:" + $objItem.Model
+    ? "Name:" + $objItem.Name
+    ? "Name Format:" + $objItem.NameFormat
+    ? "Network Server Mode Enabled:" + $objItem.NetworkServerModeEnabled
+    ? "Number Of Processors:" + $objItem.NumberOfProcessors
+    For Each $x in $objItem.OEMLogoBitmap
+        ? "OEM Logo Bitmap:" + $x
+    Next
+    For Each $x in $objItem.OEMStringArray
+        ? "OEM String Array:" + $x
+    Next
+    ? "Part Of Domain:" + $objItem.PartOfDomain
+    ? "Pause After Reset:" + $objItem.PauseAfterReset
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "PowerOn Password Status:" + $objItem.PowerOnPasswordStatus
+    ? "Power State:" + $objItem.PowerState
+    ? "Power Supply State:" + $objItem.PowerSupplyState
+    ? "Primary Owner Contact:" + $objItem.PrimaryOwnerContact
+    ? "Primary Owner Name:" + $objItem.PrimaryOwnerName
+    ? "Reset Capability:" + $objItem.ResetCapability
+    ? "Reset Count:" + $objItem.ResetCount
+    ? "Reset Limit:" + $objItem.ResetLimit
+    For Each $x in $objItem.Roles
+        ? "Roles:" + $x
+    Next
+    ? "Status:" + $objItem.Status
+    For Each $x in $objItem.SupportContactDescription
+        ? "Support Contact Description:" + $x
+    Next
+    ? "System Startup Delay:" + $objItem.SystemStartupDelay
+    For Each $x in $objItem.SystemStartupOptions
+        ? "System Startup Options:" + $x
+    Next
+    ? "System Startup Setting:" + $objItem.SystemStartupSetting
+    ? "System Type:" + $objItem.SystemType
+    ? "Thermal State:" + $objItem.ThermalState
+    ? "Total Physical Memory:" + $objItem.TotalPhysicalMemory
+    ? "User Name:" + $objItem.UserName
+    ? "WakeUp Type:" + $objItem.WakeUpType
+    ? "Workgroup:" + $objItem.Workgroup
+Next

@@ -1,0 +1,34 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Task Scheduling
+### Category3 : 
+### Description : Enumerates all the scheduled tasks on a computer. Note: WMI can only enumerate scheduled tasks created using the Win32_ScheduledJob class or the At.exe utility. It cannot enumerate tasks created using the Task Scheduler.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_ScheduledJob")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Command:" + $objItem.Command
+    ? "Days Of Month:" + $objItem.DaysOfMonth
+    ? "Days Of Week:" + $objItem.DaysOfWeek
+    ? "Description:" + $objItem.Description
+    ? "Elapsed Time:" + $objItem.ElapsedTime
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Interact With Desktop:" + $objItem.InteractWithDesktop
+    ? "Job Id:" + $objItem.JobId
+    ? "Job Status:" + $objItem.JobStatus
+    ? "Name:" + $objItem.Name
+    ? "Notify:" + $objItem.Notify
+    ? "Owner:" + $objItem.Owner
+    ? "Priority:" + $objItem.Priority
+    ? "Run Repeatedly:" + $objItem.RunRepeatedly
+    ? "Start Time:" + $objItem.StartTime
+    ? "Status:" + $objItem.Status
+    ? "Time Submitted:" + $objItem.TimeSubmitted
+    ? "Until Time:" + $objItem.UntilTime
+Next

@@ -1,0 +1,45 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Video and Display
+### Category3 : 
+### Description : Returns information about the desktop monitor connected to a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_DesktopMonitor")
+For Each $objItem in $colItems
+    ? "Availability:" + $objItem.Availability
+    ? "Bandwidth:" + $objItem.Bandwidth
+    ? "Caption:" + $objItem.Caption
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Display Type:" + $objItem.DisplayType
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Is Locked:" + $objItem.IsLocked
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Monitor Manufacturer:" + $objItem.MonitorManufacturer
+    ? "Monitor Type:" + $objItem.MonitorType
+    ? "Name:" + $objItem.Name
+    ? "Pixels Per X Logical Inch:" + $objItem.PixelsPerXLogicalInch
+    ? "Pixels Per Y Logical Inch:" + $objItem.PixelsPerYLogicalInch
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Screen Height:" + $objItem.ScreenHeight
+    ? "Screen Width:" + $objItem.ScreenWidth
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+Next

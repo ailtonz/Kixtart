@@ -1,0 +1,97 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Lists configuration information for all the network adapters installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_NetworkAdapterConfiguration")
+For Each $objItem in $colItems
+    ? "Arp Always Source Route:" + $objItem.ArpAlwaysSourceRoute
+    ? "Arp Use EtherSNAP:" + $objItem.ArpUseEtherSNAP
+    ? "Caption:" + $objItem.Caption
+    ? "Database Path:" + $objItem.DatabasePath
+    ? "Dead GW Detect Enabled:" + $objItem.DeadGWDetectEnabled
+    For Each $x in $objItem.DefaultIPGateway
+        ? "Default IP Gateway:" + $x
+    Next
+    ? "Default TOS:" + $objItem.DefaultTOS
+    ? "Default TTL:" + $objItem.DefaultTTL
+    ? "Description:" + $objItem.Description
+    ? "DHCP Enabled:" + $objItem.DHCPEnabled
+    ? "DHCP Lease Expires:" + $objItem.DHCPLeaseExpires
+    ? "DHCP LeaseO btained:" + $objItem.DHCPLeaseObtained
+    ? "DHCP Server:" + $objItem.DHCPServer
+    ? "DNS Domain:" + $objItem.DNSDomain
+    For Each $x in $objItem.DNSDomainSuffixSearchOrder
+        ? "DNS Domain Suffix Search Order:" + $x
+    Next
+    ? "DNS Enabled For WINS Resolution:" + $objItem.DNSEnabledForWINSResolution
+    ? "DNS Host Name:" + $objItem.DNSHostName
+    For Each $x in $objItem.DNSServerSearchOrder
+        ? "DNS Server Search Order:" + $x
+    Next
+    ? "Domain DNS Registration Enabled:" + $objItem.DomainDNSRegistrationEnabled
+    ? "Forward Buffer Memory:" + $objItem.ForwardBufferMemory
+    ? "Full DNS Registration Enabled:" + $objItem.FullDNSRegistrationEnabled
+    For Each $x in $objItem.GatewayCostMetric
+        ? "Gateway Cost Metric:" + $x
+    Next
+    ? "IGMP Level:" + $objItem.IGMPLevel
+    ? "Index:" + $objItem.Index
+    For Each $x in $objItem.IPAddress
+        ? "IP Address:" + $x
+    Next
+    ? "IP Connection Metric:" + $objItem.IPConnectionMetric
+    ? "IP Enabled:" + $objItem.IPEnabled
+    ? "IP Filter Security Enabled:" + $objItem.IPFilterSecurityEnabled
+    ? "IP Port Security Enabled:" + $objItem.IPPortSecurityEnabled
+    For Each $x in $objItem.IPSecPermitIPProtocols
+        ? "IPSec Permit IP Protocols:" + $x
+    Next
+    For Each $x in $objItem.IPSecPermitTCPPorts
+        ? "IPSec Permit TCP Ports:" + $x
+    Next
+    For Each $x in $objItem.IPSecPermitUDPPorts
+        ? "IPSec Permit UDP Ports:" + $x
+    Next
+    For Each $x in $objItem.IPSubnet
+        ? "IP Subnet:" + $x
+    Next
+    ? "IP Use Zero Broadcast:" + $objItem.IPUseZeroBroadcast
+    ? "IPX Address:" + $objItem.IPXAddress
+    ? "IPX Enabled:" + $objItem.IPXEnabled
+    For Each $x in $objItem.IPXFrameType
+        ? "IPX Frame Type:" + $x
+    Next
+    ? "IPX Media Type:" + $objItem.IPXMediaType
+    For Each $x in $objItem.IPXNetworkNumber
+        ? "IPX Network Number:" + $x
+    Next
+    ? "IPX Virtual Net Number:" + $objItem.IPXVirtualNetNumber
+    ? "Keep Alive Interval:" + $objItem.KeepAliveInterval
+    ? "Keep Alive Time:" + $objItem.KeepAliveTime
+    ? "MAC Address:" + $objItem.MACAddress
+    ? "MTU:" + $objItem.MTU
+    ? "Num Forward Packets:" + $objItem.NumForwardPackets
+    ? "PMTUBH Detect Enabled:" + $objItem.PMTUBHDetectEnabled
+    ? "PMTU Discovery Enabled:" + $objItem.PMTUDiscoveryEnabled
+    ? "Service Name:" + $objItem.ServiceName
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Tcpip Netbios Options:" + $objItem.TcpipNetbiosOptions
+    ? "Tcp Max Connect Retransmissions:" + $objItem.TcpMaxConnectRetransmissions
+    ? "Tcp Max Data Retransmissions:" + $objItem.TcpMaxDataRetransmissions
+    ? "Tcp Num Connections:" + $objItem.TcpNumConnections
+    ? "Tcp Use RFC1122 Urgent Pointer:" + $objItem.TcpUseRFC1122UrgentPointer
+    ? "Tcp Window Size:" + $objItem.TcpWindowSize
+    ? "WINS Enable LM Hosts Lookup:" + $objItem.WINSEnableLMHostsLookup
+    ? "WINS Host Lookup File:" + $objItem.WINSHostLookupFile
+    ? "WINS Primary Server:" + $objItem.WINSPrimaryServer
+    ? "WINS Scope ID:" + $objItem.WINSScopeID
+    ? "WINS Secondary Server:" + $objItem.WINSSecondaryServer
+Next

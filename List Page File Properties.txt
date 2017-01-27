@@ -1,0 +1,51 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Page Files
+### Category3 : 
+### Description : Lists the properties of all the page files on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_PageFile")
+For Each $objItem in $colItems
+    ? "Access Mask:" + $objItem.AccessMask
+    ? "Archive:" + $objItem.Archive
+    ? "Caption:" + $objItem.Caption
+    ? "Compressed:" + $objItem.Compressed
+    ? "Compression Method:" + $objItem.CompressionMethod
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Creation Date:" + $objItem.CreationDate
+    ? "CS Creation Class Name:" + $objItem.CSCreationClassName
+    ? "CS Name:" + $objItem.CSName
+    ? "Description:" + $objItem.Description
+    ? "Drive:" + $objItem.Drive
+    ? "Eight Dot Three File Name:" + $objItem.EightDotThreeFileName
+    ? "Encrypted:" + $objItem.Encrypted
+    ? "Encryption Method:" + $objItem.EncryptionMethod
+    ? "Extension:" + $objItem.Extension
+    ? "File Name:" + $objItem.FileName
+    ? "File Size:" + $objItem.FileSize
+    ? "File Type:" + $objItem.FileType
+    ? "Free Space:" + $objItem.FreeSpace
+    ? "FS Creation Class Name:" + $objItem.FSCreationClassName
+    ? "FS Name:" + $objItem.FSName
+    ? "Hidden:" + $objItem.Hidden
+    ? "Initial Size:" + $objItem.InitialSize
+    ? "Install Date:" + $objItem.InstallDate
+    ? "In Use Count:" + $objItem.InUseCount
+    ? "Last Accessed:" + $objItem.LastAccessed
+    ? "Last Modified:" + $objItem.LastModified
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Maximum Size:" + $objItem.MaximumSize
+    ? "Name:" + $objItem.Name
+    ? "Path:" + $objItem.Path
+    ? "Readable:" + $objItem.Readable
+    ? "Status:" + $objItem.Status
+    ? "System:" + $objItem.System
+    ? "Version:" + $objItem.Version
+    ? "Writeable:" + $objItem.Writeable
+Next

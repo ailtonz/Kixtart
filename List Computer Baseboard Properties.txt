@@ -1,0 +1,46 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns information about the computer baseboard.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_BaseBoard")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    For Each $x in $objItem.ConfigOptions
+        ? "Config Options:" + $x
+    Next
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Depth:" + $objItem.Depth
+    ? "Description:" + $objItem.Description
+    ? "Height:" + $objItem.Height
+    ? "Hosting Board:" + $objItem.HostingBoard
+    ? "Hot Swappable:" + $objItem.HotSwappable
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Model:" + $objItem.Model
+    ? "Name:" + $objItem.Name
+    ? "Other Identifying Info:" + $objItem.OtherIdentifyingInfo
+    ? "Part Number:" + $objItem.PartNumber
+    ? "Powered On:" + $objItem.PoweredOn
+    ? "Product:" + $objItem.Product
+    ? "Removable:" + $objItem.Removable
+    ? "Replaceable:" + $objItem.Replaceable
+    ? "Requirements Description:" + $objItem.RequirementsDescription
+    ? "Requires DaughterBoard:" + $objItem.RequiresDaughterBoard
+    ? "Serial Number:" + $objItem.SerialNumber
+    ? "SKU:" + $objItem.SKU
+    ? "Slot Layout:" + $objItem.SlotLayout
+    ? "Special Requirements:" + $objItem.SpecialRequirements
+    ? "Status:" + $objItem.Status
+    ? "Tag:" + $objItem.Tag
+    ? "Version:" + $objItem.Version
+    ? "Weight:" + $objItem.Weight
+    ? "Width:" + $objItem.Width
+Next

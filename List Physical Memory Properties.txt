@@ -1,0 +1,45 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Memory
+### Category3 : 
+### Description : Returns information about the physical memory installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_PhysicalMemory")
+For Each $objItem in $colItems
+    ? "Bank Label:" + $objItem.BankLabel
+    ? "Capacity:" + $objItem.Capacity
+    ? "Caption:" + $objItem.Caption
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Data Width:" + $objItem.DataWidth
+    ? "Description:" + $objItem.Description
+    ? "Device Locator:" + $objItem.DeviceLocator
+    ? "Form Factor:" + $objItem.FormFactor
+    ? "Hot Swappable:" + $objItem.HotSwappable
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Interleave Data Depth:" + $objItem.InterleaveDataDepth
+    ? "Interleave Position:" + $objItem.InterleavePosition
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Memory Type:" + $objItem.MemoryType
+    ? "Model:" + $objItem.Model
+    ? "Name:" + $objItem.Name
+    ? "Other Identifying Info:" + $objItem.OtherIdentifyingInfo
+    ? "Part Number:" + $objItem.PartNumber
+    ? "Position In Row:" + $objItem.PositionInRow
+    ? "PoweredOn:" + $objItem.PoweredOn
+    ? "Removable:" + $objItem.Removable
+    ? "Replaceable:" + $objItem.Replaceable
+    ? "Serial Number:" + $objItem.SerialNumber
+    ? "SKU:" + $objItem.SKU
+    ? "Speed:" + $objItem.Speed
+    ? "Status:" + $objItem.Status
+    ? "Tag:" + $objItem.Tag
+    ? "Total Width:" + $objItem.TotalWidth
+    ? "Type Detail:" + $objItem.TypeDetail
+    ? "Version:" + $objItem.Version
+Next

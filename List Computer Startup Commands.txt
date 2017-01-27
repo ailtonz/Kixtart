@@ -1,0 +1,22 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Startup and Shutdown
+### Category3 : 
+### Description : Enumerates all startup commands on a computer, including those found in the Startup folder and those found in the Registry.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_StartupCommand")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Command:" + $objItem.Command
+    ? "Description:" + $objItem.Description
+    ? "Location:" + $objItem.Location
+    ? "Name:" + $objItem.Name
+    ? "Setting ID:" + $objItem.SettingID
+    ? "User:" + $objItem.User
+Next

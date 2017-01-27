@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Returns information about all the network clients installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_NetworkClient")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Name:" + $objItem.Name
+    ? "Status:" + $objItem.Status
+Next

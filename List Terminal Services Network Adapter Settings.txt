@@ -1,0 +1,22 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Lists Terminal Services network adapter settings, including the maximum number of connections allowed.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TSNetworkAdapterSetting")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Maximum Connections:" + $objItem.MaximumConnections
+    ? "Network Adapter ID:" + $objItem.NetworkAdapterID
+    ? "Network Adapter Name:" + $objItem.NetworkAdapterName
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Terminal Name:" + $objItem.TerminalName
+Next

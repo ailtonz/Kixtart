@@ -1,0 +1,22 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Lists the network adapters that can be configured for Terminal Services.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TSNetworkAdapterListSetting")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Network Adapter ID:" + $objItem.NetworkAdapterID
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Terminal Name:" + $objItem.TerminalName
+    ? "Terminal Protocol:" + $objItem.TerminalProtocol
+    ? "Transport:" + $objItem.Transport
+Next

@@ -1,0 +1,61 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns information about the processors installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Processor")
+For Each $objItem in $colItems
+    ? "Address Width:" + $objItem.AddressWidth
+    ? "Architecture:" + $objItem.Architecture
+    ? "Availability:" + $objItem.Availability
+    ? "Caption:" + $objItem.Caption
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Cpu Status:" + $objItem.CpuStatus
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Current Clock Speed:" + $objItem.CurrentClockSpeed
+    ? "Current Voltage:" + $objItem.CurrentVoltage
+    ? "DataWidth:" + $objItem.DataWidth
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Ext Clock:" + $objItem.ExtClock
+    ? "Family:" + $objItem.Family
+    ? "Install Date:" + $objItem.InstallDate
+    ? "L2 Cache Size:" + $objItem.L2CacheSize
+    ? "L2 Cache Speed:" + $objItem.L2CacheSpeed
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Level:" + $objItem.Level
+    ? "Load Percentage:" + $objItem.LoadPercentage
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Max Clock Speed:" + $objItem.MaxClockSpeed
+    ? "Name:" + $objItem.Name
+    ? "Other Family Description:" + $objItem.OtherFamilyDescription
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Processor Id:" + $objItem.ProcessorId
+    ? "Processor Type:" + $objItem.ProcessorType
+    ? "Revision:" + $objItem.Revision
+    ? "Role:" + $objItem.Role
+    ? "Socket Designation:" + $objItem.SocketDesignation
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "Stepping:" + $objItem.Stepping
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "Unique Id:" + $objItem.UniqueId
+    ? "Upgrade Method:" + $objItem.UpgradeMethod
+    ? "Version:" + $objItem.Version
+    ? "Voltage Caps:" + $objItem.VoltageCaps
+Next

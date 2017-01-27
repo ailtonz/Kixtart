@@ -1,0 +1,24 @@
+###
+###
+###
+### Category1 : Storage
+### Category2 : Disk Quotas
+### Category3 : 
+### Description : Enumerates the disk quota settings for each drive on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_QuotaSetting")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Default Limit:" + $objItem.DefaultLimit
+    ? "Default Warning Limit:" + $objItem.DefaultWarningLimit
+    ? "Description:" + $objItem.Description
+    ? "Exceeded Notification:" + $objItem.ExceededNotification
+    ? "Setting ID:" + $objItem.SettingID
+    ? "State:" + $objItem.State
+    ? "Volume Path:" + $objItem.VolumePath
+    ? "Warning Exceeded Notification:" + $objItem.WarningExceededNotification
+Next

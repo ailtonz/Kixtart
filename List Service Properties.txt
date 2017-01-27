@@ -1,0 +1,40 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Services
+### Category3 : 
+### Description : Retrieves a complete list of services and their associated properties. Information is saved to a text file: C:\Scripts\Service_List.cs.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Service")
+For Each $objItem in $colItems
+    ? "Accept Pause:" + $objItem.AcceptPause
+    ? "Accept Stop:" + $objItem.AcceptStop
+    ? "Caption:" + $objItem.Caption
+    ? "Check Point:" + $objItem.CheckPoint
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Desktop Interact:" + $objItem.DesktopInteract
+    ? "Display Name:" + $objItem.DisplayName
+    ? "Error Control:" + $objItem.ErrorControl
+    ? "Exit Code:" + $objItem.ExitCode
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Name:" + $objItem.Name
+    ? "Path Name:" + $objItem.PathName
+    ? "Process Id:" + $objItem.ProcessId
+    ? "Service Specific Exit Code:" + $objItem.ServiceSpecificExitCode
+    ? "Service Type:" + $objItem.ServiceType
+    ? "Started:" + $objItem.Started
+    ? "Start Mode:" + $objItem.StartMode
+    ? "Start Name:" + $objItem.StartName
+    ? "State:" + $objItem.State
+    ? "Status:" + $objItem.Status
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "Tag Id:" + $objItem.TagId
+    ? "Wait Hint:" + $objItem.WaitHint
+Next

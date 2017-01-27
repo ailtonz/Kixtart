@@ -1,0 +1,30 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Startup and Shutdown
+### Category3 : 
+### Description : Returns a list of settings that indicate the action to be taken by a computer should a stop event (blue screen) occur.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_OSRecoveryConfiguration")
+For Each $objItem in $colItems
+    ? "AutoReboot:" + $objItem.AutoReboot
+    ? "Caption:" + $objItem.Caption
+    ? "DebugFilePath:" + $objItem.DebugFilePath
+    ? "DebugInfoType:" + $objItem.DebugInfoType
+    ? "Description:" + $objItem.Description
+    ? "ExpandedDebugFilePath:" + $objItem.ExpandedDebugFilePath
+    ? "ExpandedMiniDumpDirectory:" + $objItem.ExpandedMiniDumpDirectory
+    ? "KernelDumpOnly:" + $objItem.KernelDumpOnly
+    ? "MiniDumpDirectory:" + $objItem.MiniDumpDirectory
+    ? "Name:" + $objItem.Name
+    ? "OverwriteExistingDebugFile:" + $objItem.OverwriteExistingDebugFile
+    ? "SendAdminAlert:" + $objItem.SendAdminAlert
+    ? "SettingID:" + $objItem.SettingID
+    ? "WriteDebugInfo:" + $objItem.WriteDebugInfo
+    ? "WriteToSystemLog:" + $objItem.WriteToSystemLog
+Next

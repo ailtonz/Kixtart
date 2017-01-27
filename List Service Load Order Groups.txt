@@ -1,0 +1,22 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Services
+### Category3 : 
+### Description : Returns a list of all the service load order groups found on a computer, and well as their load order.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_LoadOrderGroup")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Driver Enabled:" + $objItem.DriverEnabled
+    ? "Group Order:" + $objItem.GroupOrder
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Name:" + $objItem.Name
+    ? "Status:" + $objItem.Status
+Next

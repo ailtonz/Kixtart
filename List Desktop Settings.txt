@@ -1,0 +1,36 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Windows and Explorer Settings
+### Category3 : 
+### Description : Lists the current desktop settings on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Desktop")
+For Each $objItem in $colItems
+    ? "Border Width:" + $objItem.BorderWidth
+    ? "Caption:" + $objItem.Caption
+    ? "Cool Switch:" + $objItem.CoolSwitch
+    ? "Cursor Blink Rate:" + $objItem.CursorBlinkRate
+    ? "Description:" + $objItem.Description
+    ? "Drag Full Windows:" + $objItem.DragFullWindows
+    ? "Grid Granularity:" + $objItem.GridGranularity
+    ? "Icon Spacing:" + $objItem.IconSpacing
+    ? "Icon Title Face Name:" + $objItem.IconTitleFaceName
+    ? "Icon Title Size:" + $objItem.IconTitleSize
+    ? "Icon Title Wrap:" + $objItem.IconTitleWrap
+    ? "Name:" + $objItem.Name
+    ? "Pattern:" + $objItem.Pattern
+    ? "Screen Saver Active:" + $objItem.ScreenSaverActive
+    ? "Screen Saver Executable:" + $objItem.ScreenSaverExecutable
+    ? "Screen Saver Secure:" + $objItem.ScreenSaverSecure
+    ? "Screen Saver Timeout:" + $objItem.ScreenSaverTimeout
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Wallpaper:" + $objItem.Wallpaper
+    ? "Wallpaper Stretched:" + $objItem.WallpaperStretched
+    ? "Wallpaper Tiled:" + $objItem.WallpaperTiled
+Next

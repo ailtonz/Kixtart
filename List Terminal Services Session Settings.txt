@@ -1,0 +1,26 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns Terminal Service session configuration information.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TSSessionSetting")
+For Each $objItem in $colItems
+    ? "Active Session Limit:" + $objItem.ActiveSessionLimit
+    ? "Broken Connection Action:" + $objItem.BrokenConnectionAction
+    ? "Broken Connection Policy:" + $objItem.BrokenConnectionPolicy
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Disconnected Session Limit:" + $objItem.DisconnectedSessionLimit
+    ? "Idle Session Limit:" + $objItem.IdleSessionLimit
+    ? "Reconnection Policy:" + $objItem.ReconnectionPolicy
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Terminal Name:" + $objItem.TerminalName
+    ? "Time Limit Policy:" + $objItem.TimeLimitPolicy
+Next

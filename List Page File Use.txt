@@ -1,0 +1,24 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Page Files
+### Category3 : 
+### Description : Retrieves page file usage statistics.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_PageFileUsage")
+For Each $objItem in $colItems
+    ? "Allocated Base Size:" + $objItem.AllocatedBaseSize
+    ? "Caption:" + $objItem.Caption
+    ? "Current Usage:" + $objItem.CurrentUsage
+    ? "Description:" + $objItem.Description
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Name:" + $objItem.Name
+    ? "Peak Usage:" + $objItem.PeakUsage
+    ? "Status:" + $objItem.Status
+    ? "Temp Page File:" + $objItem.TempPageFile
+Next

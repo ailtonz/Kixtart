@@ -1,0 +1,30 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns information about the IRQ settings on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_IRQResource")
+For Each $objItem in $colItems
+    ? "Availability:" + $objItem.Availability
+    ? "Caption:" + $objItem.Caption
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "CS Creation Class Name:" + $objItem.CSCreationClassName
+    ? "CS Name:" + $objItem.CSName
+    ? "Description:" + $objItem.Description
+    ? "Hardware:" + $objItem.Hardware
+    ? "Install Date:" + $objItem.InstallDate
+    ? "IRQ Number:" + $objItem.IRQNumber
+    ? "Name:" + $objItem.Name
+    ? "Shareable:" + $objItem.Shareable
+    ? "Status:" + $objItem.Status
+    ? "Trigger Level:" + $objItem.TriggerLevel
+    ? "Trigger Type:" + $objItem.TriggerType
+    ? "Vector:" + $objItem.Vector
+Next

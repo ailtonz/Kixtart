@@ -1,0 +1,68 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Ports and Slots
+### Category3 : 
+### Description : Returns information about the serial ports installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_SerialPort")
+For Each $objItem in $colItems
+    ? "Availability:" + $objItem.Availability
+    ? "Binary:" + $objItem.Binary
+    For Each $x in $objItem.Capabilities
+        ? "Capabilities:" + $x
+    Next
+    For Each $x in $objItem.CapabilityDescriptions
+        ? "Capability Descriptions:" + $x
+    Next
+    ? "Caption:" + $objItem.Caption
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Max Baud Rate:" + $objItem.MaxBaudRate
+    ? "Maximum Input Buffer Size:" + $objItem.MaximumInputBufferSize
+    ? "Maximum Output Buffer Size:" + $objItem.MaximumOutputBufferSize
+    ? "Max Number Controlled:" + $objItem.MaxNumberControlled
+    ? "Name:" + $objItem.Name
+    ? "OS Auto Discovered:" + $objItem.OSAutoDiscovered
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Protocol Supported:" + $objItem.ProtocolSupported
+    ? "Provider Type:" + $objItem.ProviderType
+    ? "Settable Baud Rate:" + $objItem.SettableBaudRate
+    ? "Settable Data Bits:" + $objItem.SettableDataBits
+    ? "Settable Flow Control:" + $objItem.SettableFlowControl
+    ? "Settable Parity:" + $objItem.SettableParity
+    ? "Settable Parity Check:" + $objItem.SettableParityCheck
+    ? "Settable RLSD:" + $objItem.SettableRLSD
+    ? "Settable Stop Bits:" + $objItem.SettableStopBits
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "Supports 16Bit Mode:" + $objItem.Supports16BitMode
+    ? "Supports DTRDSR:" + $objItem.SupportsDTRDSR
+    ? "Supports Elapsed Timeouts:" + $objItem.SupportsElapsedTimeouts
+    ? "Supports Int Timeouts:" + $objItem.SupportsIntTimeouts
+    ? "Supports Parity Check:" + $objItem.SupportsParityCheck
+    ? "Supports RLSD:" + $objItem.SupportsRLSD
+    ? "Supports RTSCTS:" + $objItem.SupportsRTSCTS
+    ? "Supports Special Characters:" + $objItem.SupportsSpecialCharacters
+    ? "Supports XOn XOff:" + $objItem.SupportsXOnXOff
+    ? "Supports XOn XOffSet:" + $objItem.SupportsXOnXOffSet
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "Time Of Last Reset:" + $objItem.TimeOfLastReset
+Next

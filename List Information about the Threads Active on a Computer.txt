@@ -1,0 +1,37 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Processes
+### Category3 : Processes and Threads
+### Description : Returns a list of threads and thread states for each process running on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Thread")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "CS Creation Class Name:" + $objItem.CSCreationClassName
+    ? "CS Name:" + $objItem.CSName
+    ? "Description:" + $objItem.Description
+    ? "Elapsed Time:" + $objItem.ElapsedTime
+    ? "Execution State:" + $objItem.ExecutionState
+    ? "Handle:" + $objItem.Handle
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Kernel Mode Time:" + $objItem.KernelModeTime
+    ? "Name:" + $objItem.Name
+    ? "OS Creation Class Name:" + $objItem.OSCreationClassName
+    ? "OS Name:" + $objItem.OSName
+    ? "Priority:" + $objItem.Priority
+    ? "Priority Base:" + $objItem.PriorityBase
+    ? "Process Creation Class Name:" + $objItem.ProcessCreationClassName
+    ? "Process Handle:" + $objItem.ProcessHandle
+    ? "Start Address:" + $objItem.StartAddress
+    ? "Status:" + $objItem.Status
+    ? "Thread State:" + $objItem.ThreadState
+    ? "Thread Wait Reason:" + $objItem.ThreadWaitReason
+    ? "User Mode Time:" + $objItem.UserModeTime
+Next

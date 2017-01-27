@@ -1,0 +1,40 @@
+###
+###
+###
+### Category1 : Storage
+### Category2 : Disk Drives and Volumes
+### Category3 : Controllers and Hubs
+### Description : Retrieves information about all the floppy drive controllers found on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_FloppyController")
+For Each $objItem in $colItems
+    ? "Availability:" + $objItem.Availability
+    ? "Caption:" + $objItem.Caption
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Manufacturer:" + $objItem.Manufacturer
+    ? "Max Number Controlled:" + $objItem.MaxNumberControlled
+    ? "Name:" + $objItem.Name
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Protocol Supported:" + $objItem.ProtocolSupported
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "Time Of LastReset:" + $objItem.TimeOfLastReset
+Next

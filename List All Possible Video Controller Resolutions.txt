@@ -1,0 +1,25 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Video and Display
+### Category3 : 
+### Description : Returns a list of all the possible video display resolutions that can be configured on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from CIM_VideoControllerResolution")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Horizontal Resolution:" + $objItem.HorizontalResolution
+    ? "Max Refresh Rate:" + $objItem.MaxRefreshRate
+    ? "Min Refresh Rate:" + $objItem.MinRefreshRate
+    ? "Number Of Colors:" + $objItem.NumberOfColors
+    ? "Refresh Rate:" + $objItem.RefreshRate
+    ? "Scan Mode:" + $objItem.ScanMode
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Vertical Resolution:" + $objItem.VerticalResolution
+Next
