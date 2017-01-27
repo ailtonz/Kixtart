@@ -1,0 +1,38 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Uses WMI to return information about all the network protocols installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_NetworkProtocol")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Connectionless Service:" + $objItem.ConnectionlessService
+    ? "Description:" + $objItem.Description
+    ? "Guarantees Delivery:" + $objItem.GuaranteesDelivery
+    ? "Guarantees Sequencing:" + $objItem.GuaranteesSequencing
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Maximum Address Size:" + $objItem.MaximumAddressSize
+    ? "Maximum Message Size:" + $objItem.MaximumMessageSize
+    ? "Message Oriented:" + $objItem.MessageOriented
+    ? "Minimum Address Size:" + $objItem.MinimumAddressSize
+    ? "Name:" + $objItem.Name
+    ? "Pseudo Stream Oriented:" + $objItem.PseudoStreamOriented
+    ? "Status:" + $objItem.Status
+    ? "Supports Broadcasting:" + $objItem.SupportsBroadcasting
+    ? "Supports Connect Data:" + $objItem.SupportsConnectData
+    ? "Supports Disconnect Data:" + $objItem.SupportsDisconnectData
+    ? "Supports Encryption:" + $objItem.SupportsEncryption
+    ? "Supports Expedited Data:" + $objItem.SupportsExpeditedData
+    ? "Supports Fragmentation:" + $objItem.SupportsFragmentation
+    ? "Supports Graceful Closing:" + $objItem.SupportsGracefulClosing
+    ? "Supports Guaranteed Bandwidth:" + $objItem.SupportsGuaranteedBandwidth
+    ? "Supports Multicasting:" + $objItem.SupportsMulticasting
+    ? "Supports Quality of Service:" + $objItem.SupportsQualityofService
+Next

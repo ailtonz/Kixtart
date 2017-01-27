@@ -1,0 +1,34 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Lists the Terminal Service configuration settings on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TerminalServiceSetting")
+For Each $objItem in $colItems
+    ? "Active Desktop:" + $objItem.ActiveDesktop
+    ? "Allow TS Connections:" + $objItem.AllowTSConnections
+    ? "Caption:" + $objItem.Caption
+    ? "Delete Temp Folders:" + $objItem.DeleteTempFolders
+    ? "Description:" + $objItem.Description
+    ? "Direct Connect License Servers:" + $objItem.DirectConnectLicenseServers
+    ? "Help:" + $objItem.Help
+    ? "Home Directory:" + $objItem.HomeDirectory
+    ? "Licensing Description:" + $objItem.LicensingDescription
+    ? "Licensing Name:" + $objItem.LicensingName
+    ? "Licensing Type:" + $objItem.LicensingType
+    ? "Logons:" + $objItem.Logons
+    ? "Profile Path:" + $objItem.ProfilePath
+    ? "Server Name:" + $objItem.ServerName
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Single Session:" + $objItem.SingleSession
+    ? "Terminal Server Mode:" + $objItem.TerminalServerMode
+    ? "User Permission:" + $objItem.UserPermission
+    ? "Use Temp Folders:" + $objItem.UseTempFolders
+Next

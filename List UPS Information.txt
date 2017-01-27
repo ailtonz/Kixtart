@@ -1,0 +1,60 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Batteries and Power Supplies
+### Category3 : 
+### Description : Lists information about the uninterruptible power sources attached to a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_UninterruptiblePowerSupply")
+For Each $objItem in $colItems
+    ? "Active Input Voltage:" + $objItem.ActiveInputVoltage
+    ? "Availability:" + $objItem.Availability
+    ? "Battery Installed:" + $objItem.BatteryInstalled
+    ? "Can Turn Off Remotely:" + $objItem.CanTurnOffRemotely
+    ? "Caption:" + $objItem.Caption
+    ? "Command File:" + $objItem.CommandFile
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Estimated Charge Remaining:" + $objItem.EstimatedChargeRemaining
+    ? "Estimated Run Time:" + $objItem.EstimatedRunTime
+    ? "First Message Delay:" + $objItem.FirstMessageDelay
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Is Switching Supply:" + $objItem.IsSwitchingSupply
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Low Battery Signal:" + $objItem.LowBatterySignal
+    ? "Message Interval:" + $objItem.MessageInterval
+    ? "Name:" + $objItem.Name
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    ? "Power Fail Signal:" + $objItem.PowerFailSignal
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Range 1 Input Frequency High:" + $objItem.Range1InputFrequencyHigh
+    ? "Range 1 Input Frequency Low:" + $objItem.Range1InputFrequencyLow
+    ? "Range 1 Input Voltage High:" + $objItem.Range1InputVoltageHigh
+    ? "Range 1 Input Voltage Low:" + $objItem.Range1InputVoltageLow
+    ? "Range 2 Input Frequency High:" + $objItem.Range2InputFrequencyHigh
+    ? "Range 2 Input Frequency Low:" + $objItem.Range2InputFrequencyLow
+    ? "Range 2 Input Voltage High:" + $objItem.Range2InputVoltageHigh
+    ? "Range 2 Input Voltage Low:" + $objItem.Range2InputVoltageLow
+    ? "Remaining Capacity Status:" + $objItem.RemainingCapacityStatus
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "Time On Backup:" + $objItem.TimeOnBackup
+    ? "Total Output Power:" + $objItem.TotalOutputPower
+    ? "Type Of Range Switching:" + $objItem.TypeOfRangeSwitching
+    ? "UPS Port:" + $objItem.UPSPort
+Next

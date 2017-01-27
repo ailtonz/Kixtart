@@ -1,0 +1,31 @@
+###
+###
+###
+### Category1 : Other Directory Services
+### Category2 : Local Computer and NT 4 Accounts
+### Category3 : User Accounts
+### Description : Returns information about the user accounts found on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_UserAccount")
+For Each $objItem in $colItems
+    ? "Account Type:" + $objItem.AccountType
+    ? "Caption:" + $objItem.Caption
+    ? "Description:" + $objItem.Description
+    ? "Disabled:" + $objItem.Disabled
+    ? "Domain:" + $objItem.Domain
+    ? "Full Name:" + $objItem.FullName
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Local Account:" + $objItem.LocalAccount
+    ? "Lockout:" + $objItem.Lockout
+    ? "Name:" + $objItem.Name
+    ? "Password Changeable:" + $objItem.PasswordChangeable
+    ? "Password Expires:" + $objItem.PasswordExpires
+    ? "Password Required:" + $objItem.PasswordRequired
+    ? "SID:" + $objItem.SID
+    ? "SID Type:" + $objItem.SIDType
+    ? "Status:" + $objItem.Status
+Next

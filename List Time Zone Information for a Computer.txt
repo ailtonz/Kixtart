@@ -1,0 +1,39 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Dates and Times
+### Category3 : 
+### Description : Retrieve information about the time zone configured on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_TimeZone")
+For Each $objItem in $colItems
+    ? "Bias:" + $objItem.Bias
+    ? "Caption:" + $objItem.Caption
+    ? "Daylight Bias:" + $objItem.DaylightBias
+    ? "Daylight Day:" + $objItem.DaylightDay
+    ? "Daylight Day Of Week:" + $objItem.DaylightDayOfWeek
+    ? "Daylight Hour:" + $objItem.DaylightHour
+    ? "Daylight Millisecond:" + $objItem.DaylightMillisecond
+    ? "Daylight Minute:" + $objItem.DaylightMinute
+    ? "Daylight Month:" + $objItem.DaylightMonth
+    ? "Daylight Name:" + $objItem.DaylightName
+    ? "Daylight Second:" + $objItem.DaylightSecond
+    ? "Daylight Year:" + $objItem.DaylightYear
+    ? "Description:" + $objItem.Description
+    ? "Setting ID:" + $objItem.SettingID
+    ? "Standard Bias:" + $objItem.StandardBias
+    ? "Standard Day:" + $objItem.StandardDay
+    ? "Standard DayOfWeek:" + $objItem.StandardDayOfWeek
+    ? "Standard Hour:" + $objItem.StandardHour
+    ? "Standard Millisecond:" + $objItem.StandardMillisecond
+    ? "Standard Minute:" + $objItem.StandardMinute
+    ? "Standard Month:" + $objItem.StandardMonth
+    ? "Standard Name:" + $objItem.StandardName
+    ? "Standard Second:" + $objItem.StandardSecond
+    ? "Standard Year:" + $objItem.StandardYear
+Next

@@ -1,0 +1,44 @@
+###
+###
+###
+### Category1 : Scripting Techniques
+### Category2 : WMI
+### Category3 : 
+### Description : Returns information about how WMI has been configured on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_WMISetting")
+For Each $objItem in $colItems
+    ? "ASP Script Default Namespace:" + $objItem.ASPScriptDefaultNamespace
+    ? "ASP Script Enabled:" + $objItem.ASPScriptEnabled
+    For Each $x in $objItem.AutorecoverMofs
+        ? "Autorecover Mofs:" + $x
+    Next
+    ? "AutoStart Win9X:" + $objItem.AutoStartWin9X
+    ? "Backup Interval:" + $objItem.BackupInterval
+    ? "Backup Last Time:" + $objItem.BackupLastTime
+    ? "Build Version:" + $objItem.BuildVersion
+    ? "Caption:" + $objItem.Caption
+    ? "Database Directory:" + $objItem.DatabaseDirectory
+    ? "Database Max Size:" + $objItem.DatabaseMaxSize
+    ? "Description:" + $objItem.Description
+    ? "Enable Anon Win9x Connections:" + $objItem.EnableAnonWin9xConnections
+    ? "Enable Events:" + $objItem.EnableEvents
+    ? "EnableS tartup Heap Preallocation:" + $objItem.EnableStartupHeapPreallocation
+    ? "High Threshold On Client Objects:" + $objItem.HighThresholdOnClientObjects
+    ? "High Threshold On Events:" + $objItem.HighThresholdOnEvents
+    ? "Installation Directory:" + $objItem.InstallationDirectory
+    ? "Last Startup Heap Preallocation:" + $objItem.LastStartupHeapPreallocation
+    ? "Logging Directory:" + $objItem.LoggingDirectory
+    ? "Logging Level:" + $objItem.LoggingLevel
+    ? "Low Threshold On Client Objects:" + $objItem.LowThresholdOnClientObjects
+    ? "Low Threshold On Events:" + $objItem.LowThresholdOnEvents
+    ? "Max Log File Size:" + $objItem.MaxLogFileSize
+    ? "Max Wait On Client Objects:" + $objItem.MaxWaitOnClientObjects
+    ? "Max Wait On Events:" + $objItem.MaxWaitOnEvents
+    ? "Mof Self-Install Directory:" + $objItem.MofSelfInstallDirectory
+    ? "Setting ID:" + $objItem.SettingID
+Next

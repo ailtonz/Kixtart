@@ -1,0 +1,47 @@
+###
+###
+###
+### Category1 : Storage
+### Category2 : Disk Drives and Volumes
+### Category3 : Controllers and Hubs
+### Description : Returns information about all the USB hubs found on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_USBHub")
+For Each $objItem in $colItems
+    ? "Availability:" + $objItem.Availability
+    ? "Caption:" + $objItem.Caption
+    ? "Class Code:" + $objItem.ClassCode
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    For Each $x in $objItem.CurrentAlternateSettings
+        ? "Current Alternate Settings:" + $x
+    Next
+    ? "Current Config Value:" + $objItem.CurrentConfigValue
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "Gang Switched:" + $objItem.GangSwitched
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Last ErrorCode:" + $objItem.LastErrorCode
+    ? "Name:" + $objItem.Name
+    ? "Number Of Configs:" + $objItem.NumberOfConfigs
+    ? "Number O fPorts:" + $objItem.NumberOfPorts
+    ? "PNP Devic eID:" + $objItem.PNPDeviceID
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Protocol Code:" + $objItem.ProtocolCode
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "Subclass Code:" + $objItem.SubclassCode
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "USB Version:" + $objItem.USBVersion
+Next

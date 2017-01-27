@@ -1,0 +1,80 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Video and Display
+### Category3 : 
+### Description : Retrieves information about the video controller installed on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_VideoController")
+For Each $objItem in $colItems
+    For Each $x in $objItem.AcceleratorCapabilities
+        ? "Accelerator Capabilities:" + $x
+    Next
+    ? "Adapter Compatibility:" + $objItem.AdapterCompatibility
+    ? "Adapter DAC Type:" + $objItem.AdapterDACType
+    ? "Adapter RAM:" + $objItem.AdapterRAM
+    ? "Availability:" + $objItem.Availability
+    For Each $x in $objItem.CapabilityDescriptions
+        ? "Capability Descriptions:" + $x
+    Next
+    ? "Caption:" + $objItem.Caption
+    ? "Color Table Entries:" + $objItem.ColorTableEntries
+    ? "Config Manager Error Code:" + $objItem.ConfigManagerErrorCode
+    ? "Config Manager User Config:" + $objItem.ConfigManagerUserConfig
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Current Bits Per Pixel:" + $objItem.CurrentBitsPerPixel
+    ? "Current Horizontal Resolution:" + $objItem.CurrentHorizontalResolution
+    ? "Current Number Of Colors:" + $objItem.CurrentNumberOfColors
+    ? "Current Number Of Columns:" + $objItem.CurrentNumberOfColumns
+    ? "Current Number Of Rows:" + $objItem.CurrentNumberOfRows
+    ? "Current Refresh Rate:" + $objItem.CurrentRefreshRate
+    ? "Current Scan Mode:" + $objItem.CurrentScanMode
+    ? "Current Vertical Resolution:" + $objItem.CurrentVerticalResolution
+    ? "Description:" + $objItem.Description
+    ? "Device ID:" + $objItem.DeviceID
+    ? "Device Specific Pens:" + $objItem.DeviceSpecificPens
+    ? "Dither Type:" + $objItem.DitherType
+    ? "Driver Date:" + $objItem.DriverDate
+    ? "Driver Version:" + $objItem.DriverVersion
+    ? "Error Cleared:" + $objItem.ErrorCleared
+    ? "Error Description:" + $objItem.ErrorDescription
+    ? "ICM Intent:" + $objItem.ICMIntent
+    ? "ICM Method:" + $objItem.ICMMethod
+    ? "Inf Filename:" + $objItem.InfFilename
+    ? "Inf Section:" + $objItem.InfSection
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Installed Display Drivers:" + $objItem.InstalledDisplayDrivers
+    ? "Last Error Code:" + $objItem.LastErrorCode
+    ? "Max Memory Supported:" + $objItem.MaxMemorySupported
+    ? "Max Number Controlled:" + $objItem.MaxNumberControlled
+    ? "Max Refresh Rate:" + $objItem.MaxRefreshRate
+    ? "Min Refresh Rate:" + $objItem.MinRefreshRate
+    ? "Monochrome:" + $objItem.Monochrome
+    ? "Name:" + $objItem.Name
+    ? "Number Of Color Planes:" + $objItem.NumberOfColorPlanes
+    ? "Number Of Video Pages:" + $objItem.NumberOfVideoPages
+    ? "PNP Device ID:" + $objItem.PNPDeviceID
+    For Each $x in $objItem.PowerManagementCapabilities
+        ? "Power Management Capabilities:" + $x
+    Next
+    ? "Power Management Supported:" + $objItem.PowerManagementSupported
+    ? "Protocol Supported:" + $objItem.ProtocolSupported
+    ? "Reserved System Palette Entries:" + $objItem.ReservedSystemPaletteEntries
+    ? "Specification Version:" + $objItem.SpecificationVersion
+    ? "Status:" + $objItem.Status
+    ? "Status Info:" + $objItem.StatusInfo
+    ? "System Creation Class Name:" + $objItem.SystemCreationClassName
+    ? "System Name:" + $objItem.SystemName
+    ? "System Palette Entries:" + $objItem.SystemPaletteEntries
+    ? "Time Of Last Reset:" + $objItem.TimeOfLastReset
+    ? "Video Architecture:" + $objItem.VideoArchitecture
+    ? "Video Memory Type:" + $objItem.VideoMemoryType
+    ? "Video Mode:" + $objItem.VideoMode
+    ? "Video Mode Description:" + $objItem.VideoModeDescription
+    ? "Video Processor:" + $objItem.VideoProcessor
+Next

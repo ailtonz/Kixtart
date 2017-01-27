@@ -1,0 +1,25 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Dates and Times
+### Category3 : 
+### Description : Returns information about the local time configured on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_LocalTime")
+For Each $objItem in $colItems
+    ? "Day:" + $objItem.Day
+    ? "Day Of Week:" + $objItem.DayOfWeek
+    ? "Hour:" + $objItem.Hour
+    ? "Milliseconds:" + $objItem.Milliseconds
+    ? "Minute:" + $objItem.Minute
+    ? "Month:" + $objItem.Month
+    ? "Quarter:" + $objItem.Quarter
+    ? "Second:" + $objItem.Second
+    ? "Week In Month:" + $objItem.WeekInMonth
+    ? "Year:" + $objItem.Year
+Next

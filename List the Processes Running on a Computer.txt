@@ -1,0 +1,60 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Processes
+### Category3 : Processes and Threads
+### Description : Returns information about all the processes running on a computer.
+###
+###
+###
+$strComputer = "."
+$objWMIService = GetObject("winmgmts:\\"+ $strComputer + "\root\cimv2")
+$colItems = $objWMIService.ExecQuery("Select * from Win32_Process")
+For Each $objItem in $colItems
+    ? "Caption:" + $objItem.Caption
+    ? "Command Line:" + $objItem.CommandLine
+    ? "Creation Class Name:" + $objItem.CreationClassName
+    ? "Creation Date:" + $objItem.CreationDate
+    ? "CS Creation Class Name:" + $objItem.CSCreationClassName
+    ? "CS Name:" + $objItem.CSName
+    ? "Description:" + $objItem.Description
+    ? "Executable Path:" + $objItem.ExecutablePath
+    ? "Execution State:" + $objItem.ExecutionState
+    ? "Handle:" + $objItem.Handle
+    ? "Handle Count:" + $objItem.HandleCount
+    ? "Install Date:" + $objItem.InstallDate
+    ? "Kernel Mode Time:" + $objItem.KernelModeTime
+    ? "Maximum Working Set Size:" + $objItem.MaximumWorkingSetSize
+    ? "Minimum Working Set Size:" + $objItem.MinimumWorkingSetSize
+    ? "Name:" + $objItem.Name
+    ? "OS Creation Class Name:" + $objItem.OSCreationClassName
+    ? "OS Name:" + $objItem.OSName
+    ? "Other Operation Count:" + $objItem.OtherOperationCount
+    ? "Other Transfer Count:" + $objItem.OtherTransferCount
+    ? "Page Faults:" + $objItem.PageFaults
+    ? "Page File Usage:" + $objItem.PageFileUsage
+    ? "Parent Process Id:" + $objItem.ParentProcessId
+    ? "Peak Page File Usage:" + $objItem.PeakPageFileUsage
+    ? "Peak Virtual Size:" + $objItem.PeakVirtualSize
+    ? "Peak Working Set Size:" + $objItem.PeakWorkingSetSize
+    ? "Priority:" + $objItem.Priority
+    ? "Private Page Count:" + $objItem.PrivatePageCount
+    ? "Process Id:" + $objItem.ProcessId
+    ? "Quota NonPaged Pool Usage:" + $objItem.QuotaNonPagedPoolUsage
+    ? "Quota Paged Pool Usage:" + $objItem.QuotaPagedPoolUsage
+    ? "Quota Peak NonPaged Pool Usage:" + $objItem.QuotaPeakNonPagedPoolUsage
+    ? "Quota Peak Paged Pool Usage:" + $objItem.QuotaPeakPagedPoolUsage
+    ? "Read Operation Count:" + $objItem.ReadOperationCount
+    ? "Read Transfer Count:" + $objItem.ReadTransferCount
+    ? "Session Id:" + $objItem.SessionId
+    ? "Status:" + $objItem.Status
+    ? "Termination Date:" + $objItem.TerminationDate
+    ? "Thread Count:" + $objItem.ThreadCount
+    ? "User Mode Time:" + $objItem.UserModeTime
+    ? "Virtual Size:" + $objItem.VirtualSize
+    ? "Windows Version:" + $objItem.WindowsVersion
+    ? "Working Set Size:" + $objItem.WorkingSetSize
+    ? "Write Operation Count:" + $objItem.WriteOperationCount
+    ? "Write Transfer Count:" + $objItem.WriteTransferCount
+Next
